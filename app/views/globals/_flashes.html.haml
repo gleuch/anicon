@@ -1,0 +1,8 @@
+#app_flashes
+  - [@announcement, flash].each do |item|
+    - unless item.blank?
+      - item.each do |t,v|
+        %details.flash.rel{:class => "flash_#{t.to_s}"}
+          - if t == :notice
+            %a.close.abs.js{:href => 'javascript:;'} X
+          = v

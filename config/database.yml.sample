@@ -1,0 +1,22 @@
+development:
+  adapter:  mysql2
+  database: anicon_dev
+  username: root
+  password: 
+  encoding: utf8
+
+
+test:
+  adapter:  mysql2
+  database: anicon_test
+  username: root
+  password: 
+  encoding: utf8
+
+
+production:
+  adapter:  mysql2
+  database: anicon_prod
+  username: root
+  password: 
+  encoding: utf8

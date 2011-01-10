@@ -1,0 +1,15 @@
+%h2 Resize your animated GIF for Twitter.
+
+- form_for @photo, photos_path(embed_params), :html => {:multipart => true} do |f|
+  = render 'globals/error_messages', :object => @photo
+
+  - if embed?
+    %input{:type => 'hidden', :name => 'embed', :value => 1}
+
+  .c
+    %fieldset.upload.left
+      = f.file_field :photo
+    %fieldset.buttons.left
+      = f.submit 'Resize!'
+
+  %p.note Only valid animated GIFs under 1MB are accepted.

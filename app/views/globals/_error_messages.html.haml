@@ -1,0 +1,9 @@
+- if !object.blank? && object.errors.any?
+  #error_explanation
+    %h5= pluralize(object.errors.count, 'error') << |
+         " prohibited this " << |
+         object.class.to_s.underscore.humanize.downcase << |
+         " from being saved:" |
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg
