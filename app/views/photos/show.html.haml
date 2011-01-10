@@ -1,15 +1,23 @@
 - unless @photo.blank?
+  - content_for :blurb do
+    %h3 Nice animated avatar! :D
+    %p Good job! Now download the GIF and upload as your profile photo <a href="http://twitter.com/settings/profile" target="_blank">on Twitter</a>.
+
+
+  - unless embed?
+    #blurb= yield :blurb
+
   .area.c
     .photo.left
       %a{:href => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
     .download.left
       %a.button{:href => download_photo_path(@photo)} Download Now
-
-  %h3 Nice animated avatar! :D
-  %p Good job! Now download the GIF and upload as your profile photo <a href="http://twitter.com/settings/profile" target="_blank">on Twitter</a>.
   
   - if embed?
+    = yield :blurb
+
     = render 'globals/footer'
+
 
 - else
   %h1 This photo does not exist!

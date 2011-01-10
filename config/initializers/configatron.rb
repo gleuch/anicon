@@ -1,0 +1,1 @@
+configatron.configure_from_yaml("config/settings.yml", :hash => Rails.env.to_s)

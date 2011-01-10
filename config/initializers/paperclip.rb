@@ -83,3 +83,9 @@ module Paperclip
     end
   end
 end
+
+
+# Fix for no method `fingerprint` in 3.0.2 / 3.0.3  >> https://github.com/thoughtbot/paperclip/issues/issue/346
+if defined? ActionDispatch::Http::UploadedFile
+  ActionDispatch::Http::UploadedFile.send(:include, Paperclip::Upfile)
+end

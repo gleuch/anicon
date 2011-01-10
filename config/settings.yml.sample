@@ -1,0 +1,15 @@
+development: &local
+
+  ganalytics_id:  # E.g. UA-#######-##
+
+
+production:
+  <<: *local
+
+
+staging:
+  <<: *local
+
+  
+test:
+  <<: *local

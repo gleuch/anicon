@@ -2,7 +2,8 @@ html, body, header, hgroup, nav, article, section, details, aside, footer, div, 
 header, hgroup, nav, article, section, details, aside, footer {display: block; zoom: 1;}
 
 html, body, * {font-family: Arial, Helvetica, Verdana; line-height: 1.0em; font-size: 1.0em; vertical-align: top; letter-spacing: -.02em;}
-body {background: #fff; line-height: 1.0em; font-size: 62.5%; margin: 0; padding: 0;}
+body {background: #c3ddef; line-height: 1.0em; font-size: 62.5%; margin: 0; padding: 0;}
+body.embed {background: #fff;}
 
 html {height: 100%;}
 body.embed {height: 100%;}
@@ -30,6 +31,10 @@ a:hover {color: #196ca1;}
 #embed_content_area {padding: 8px;}
 #embed_container {padding: 10px;}
 
+#content {background: #fff; color: #222; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+#content_area {padding: 36px 24px; max-width: 770px; margin: 0 auto;}
+#container {padding: 12px;}
+
 
 /*body.photos_new form fieldset.upload {width: 206px;}
 body.photos_new form fieldset.upload input {width: 200px;}*/
@@ -43,16 +48,29 @@ body.photos form p.note {padding: 3px 0 4px 0; font-size: 1.1em; font-style: ita
 
 a.button {display: inline-block; text-decoration: none;}
 
+#header {padding: 0 0 12px 0;}
+#header h1 {padding: 0 0 3px 0; font-size: 2.8em;}
+
+.photos_index #instructions {}
+.photos_index #instructions #formarea {width: 400px;}
+.photos_index #instructions #latest_icons {padding: 0 0 0 32px;}
+.photos_index #instructions #latest_icons .left .photo {padding: 0 10px 8px 0;}
+.photos_index #instructions p.label {font-size: 1.3em;}
+.photos_index #instructions ol {padding: 0 0 2px 0; margin: 0 0 0 20px;}
+.photos_index #instructions ol li {}
+
 .photos_show .c.area {padding: 8px; margin: 0 0 0 8px;}
 .photos_show .photo {width: 48px; padding: 0 12px 0 0;}
 .photos_show .download {padding: 8px 0 0 0;}
 .photos_show a.button {font-size: 1.6em; padding: 6px 12px;}
 .photos_show h3 {padding: 0 0 3px 0;}
 
-#error_explanation {padding: 8px 12px 10px 12px; background: #ececec; margin: 2px 0 8px 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+#error_explanation, #blurb, #flashes {padding: 8px 12px 10px 12px; background: #ececec; margin: 2px 0 8px 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 #error_explanation h5 {font-size: 1.3em;}
 #error_explanation ul {padding: 0 0 2px 0; margin: 0 0 0 20px;}
 #error_explanation ul li {font-size: 1.3em;}
+#flashes p {padding: 6px 0 0 0;}
+#flashes p:first-child {padding: 3px 0 0 0;}
 
 
 p.footer {text-align: center; color: #909090; font-size: 1.1em; padding: 12px 0 4px 0;}

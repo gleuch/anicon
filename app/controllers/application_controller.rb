@@ -11,7 +11,7 @@ protected
 
   # Things to initalize in app
   def app_init
-    add_meta(:property => 'og:title', :context => 'Zagat Food Trucks')
+    add_meta(:property => 'og:title', :context => 'Anicon, Animated Avatar Resizing')
     add_meta(:property => 'robots',   :context => 'index,follow')
   end
 
