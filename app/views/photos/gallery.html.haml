@@ -1,0 +1,9 @@
+#latest_icons
+  %h2.rel
+    Latest Animated GIF Uploads
+    %a.button.abs{:href => "#{new_photo_path}#{embed_params}"} Upload a GIF
+
+  #icons_grid.c
+    - @photos.each do |photo|
+      .left
+        %a{:href => "#{photo_path(photo)}#{embed_params}"}= image_tag photo.photo.url(:icon), :title => '', :alt => '', :class => 'photo'

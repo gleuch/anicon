@@ -1,7 +1,19 @@
-%h2
+%h2 
   - if embed?
     Resize your animated GIF for Twitter.
   - else
     Upload your animated GIF.
 
-= render 'photos/form', :photo => @photo
+- if embed? || request.post?
+  = render 'photos/form', :photo => @photo
+
+- else
+  #instructions
+    %h5 Instructions:
+    %ol
+      %li
+        %p Find your imagery (or use 3fram.es to make an animated GIF).
+      %li
+        %p Upload your animated GIF to be resized: 
+        %br
+        = render 'photos/form', :photo => @photo

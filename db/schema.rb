@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110110045452) do
+ActiveRecord::Schema.define(:version => 20110113070453) do
 
   create_table "photos", :force => true do |t|
     t.string   "ip_address"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(:version => 20110110045452) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "active",             :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "uploaded",           :default => false
+    t.integer  "user_id"
+  end
+
+  create_table "user_photos", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "token"
+    t.string   "secret"
+    t.string   "twitter_id"
+    t.string   "screen_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

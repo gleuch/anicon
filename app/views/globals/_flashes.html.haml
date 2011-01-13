@@ -1,9 +1,20 @@
+- @flashed = false
+
 - unless @announcement.blank? && flash.blank?
   #flashes
     - [@announcement, flash].each do |item|
       - unless item.blank?
         - item.each do |t,v|
-          %p.flash.rel{:class => "flash_#{t.to_s}"}
-            - if false #t == :notice
-              %a.close.abs.js{:href => 'javascript:;'} X
-            = v
+          - @flashed = true
+
+          .flash.rel{:class => "flash_#{t.to_s}"}
+            - if v.is_a?(Hash)
+              - unless v[:title].blank?
+                %h3= v[:title]
+              - unless v[:body].blank?
+                %p= v[:body]
+            - else
+              %p.str
+                - if false #t == :notice
+                  %a.close.abs.js{:href => 'javascript:;'} X
+                = v

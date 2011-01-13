@@ -1,20 +1,16 @@
-#instructions
-  .c
-    #formarea.left
-      %h5 Instructions:
-      %ol
-        %li
-          %p Find your imagery (or use 3fram.es to make an animated GIF).
-        %li
-          %p Upload your animated GIF to be resized: 
-          %br
-          = render 'photos/form', :photo => @photo
+.c
+  #blurb_area{:class => (!embed? ? 'left' : '')}
+    %h3 Ready to Create?
+    %p Get excited to make your own animated Twitter icon&hellip;
+    %p.more
+      %a.button{:href => "#{new_photo_path}#{embed_params}"} Start Creating!
 
-    - if !embed? && !@photos.blank?
-      #latest_icons.right
-        %h5 Latest Uploads
-        #icons_grid.c
-          - @photos.each do |photo|
-            .left
-              = image_tag photo.photo.url(:icon), :title => '', :alt => '', :class => 'photo'
-        
+  - if !embed? && !@photos.blank?
+    #latest_icons
+      %h3
+        Latest Uploads
+        %a.button.grey{:href => gallery_photos_path} View All
+      #icons_grid.c
+        - @photos.each do |photo|
+          .left
+            %a{:href => "#{photo_path(photo)}#{embed_params}"}= image_tag photo.photo.url(:icon), :title => '', :alt => '', :class => 'photo'

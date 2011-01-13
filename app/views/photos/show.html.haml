@@ -1,23 +1,29 @@
+- if (embed? && @announcement.blank? && flash.blank?)
+  %h2 Resized Animated GIF
+
 - unless @photo.blank?
-  - content_for :blurb do
-    %h3 Nice animated avatar! :D
-    %p Good job! Now download the GIF and upload as your profile photo <a href="http://twitter.com/settings/profile" target="_blank">on Twitter</a>.
-
-
-  - unless embed?
-    #blurb= yield :blurb
-
   .area.c
     .photo.left
       %a{:href => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
-    .download.left
-      %a.button{:href => download_photo_path(@photo)} Download Now
-  
+    .download.left{:class => (@photo.uploaded? ? 'uploaded' : '')}
+      - unless @photo.uploaded?
+        %a.button{:href => "#{upload_photo_path(@photo)}#{embed_params}"} Upload to Twitter
+        %br
+        %span or
+        %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+      - else
+        %strong
+          Used by
+          %a{:href => "http://twitter.com/#{@photo.user.screen_name}", :target => '_blank'} @#{@photo.user.screen_name}
+        %br
+        %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+    .again.right
+      %h4 Another image?
+      %p
+        %a{:href => "#{new_photo_path}#{embed_params}"} Resize another animated GIF!
+
   - if embed?
-    = yield :blurb
-
     = render 'globals/footer'
-
 
 - else
   %h1 This photo does not exist!

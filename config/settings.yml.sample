@@ -1,6 +1,9 @@
 development: &local
 
-  ganalytics_id:  # E.g. UA-#######-##
+  ganalytics_id:    # E.g. UA-#######-##
+
+  twitter_token:    # Register your aoo online at http://dev.twitter.com/apps/new
+  twitter_secret:   # 
 
 
 production:

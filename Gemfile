@@ -6,10 +6,8 @@ gem 'configatron',    '2.6.4'   # Storing config options
 gem 'paperclip',      '2.3.6'   # Image resize
 gem 'haml',           '3.0.18'  # HTML prototyping
 gem 'jquery-rails',   '0.2.3'   # Add jQuery to Rails
-
-
-# TODO : Eventually allow API uploads...
-# gem 'twitter_oauth',  '0.4.3'   # oAuth connections to Twitter
+gem 'oauth',          '0.4.4'   # oAuth connect
+gem 'twitter',        '1.1.0'   # Connections to Twitter
 
 
 # DEVELOPMENT

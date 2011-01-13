@@ -22,18 +22,20 @@ p {font-size: 1.2em;}
 a {color: #3996d1; font-weight: bold;}
 a:hover {color: #196ca1;}
 
+.rel {position: relative;}
+.abs {position: absolute;}
 .left {clear: none; float: left;}
-.right {clear: none; float: left;}
+.right {clear: none; float: right;}
 .c:after{content: "."; clear: both; display: block; height: 0; visibility: hidden;}
 
 #embed {width: 100%; height: 100%; background: #c3ddef; color: #222; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
-#embed_content {background: #fff; color: #222; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+#embed_content {background: #fff; max-width: 500px; color: #222; margin: 0 auto; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 #embed_content_area {padding: 8px;}
 #embed_container {padding: 10px;}
 
 #content {background: #fff; color: #222; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 #content_area {padding: 36px 24px; max-width: 770px; margin: 0 auto;}
-#container {padding: 12px;}
+#container {padding: 12px 36px 12px 36px;}
 
 
 /*body.photos_new form fieldset.upload {width: 206px;}
@@ -48,29 +50,48 @@ body.photos form p.note {padding: 3px 0 4px 0; font-size: 1.1em; font-style: ita
 
 a.button {display: inline-block; text-decoration: none;}
 
-#header {padding: 0 0 12px 0;}
-#header h1 {padding: 0 0 3px 0; font-size: 2.8em;}
+#header {padding: 0 0 12px 0px;}
+#header h1 {padding: 0 0 3px 44px; margin: 0 0 0 -44px; font-size: 2.8em; background: url(../images/flying_tweet.gif) 0 5px no-repeat;}
 
-.photos_index #instructions {}
-.photos_index #instructions #formarea {width: 400px;}
-.photos_index #instructions #latest_icons {padding: 0 0 0 32px;}
-.photos_index #instructions #latest_icons .left .photo {padding: 0 10px 8px 0;}
-.photos_index #instructions p.label {font-size: 1.3em;}
-.photos_index #instructions ol {padding: 0 0 2px 0; margin: 0 0 0 20px;}
-.photos_index #instructions ol li {}
+.photos #instructions {}
+.photos #instructions #formarea {width: 400px;}
+.photos #instructions p.label {font-size: 1.3em;}
+.photos #instructions ol {padding: 0 0 2px 0; margin: 0 0 0 20px;}
+.photos #instructions ol li {}
 
-.photos_show .c.area {padding: 8px; margin: 0 0 0 8px;}
-.photos_show .photo {width: 48px; padding: 0 12px 0 0;}
-.photos_show .download {padding: 8px 0 0 0;}
-.photos_show a.button {font-size: 1.6em; padding: 6px 12px;}
+.photos #blurb_area {padding: 8px 12px; margin: 10px 0 6px 0; background: #ececec; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.photos #blurb_area.left {width: 200px;}
+.photos #blurb_area p {font-size: 1.3em;}
+.photos #blurb_area p.more {text-align: center; padding-top: 10px;}
+.photos #blurb_area a.button {font-size: 1.33em; padding: 7px 16px; margin: 0 0 5px 0;;}
+
+.photos #latest_icons {}
+.photos #latest_icons a.button {font-size: .625em; vertical-align: top;}
+.photos #latest_icons a.button.grey {background: #dcdcdc; color: #606060;}
+.photos #latest_icons a.button.grey:hover {background: #c0c0c0; color: #404040;}
+.photos #latest_icons .left .photo {padding: 0 10px 8px 0;}
+.photos_index #latest_icons {padding: 10px 0 6px 256px;}
+.photos #latest_icons h2 a.button {top: 0; right: 0;}
+
+
+.photos_show .c.area {padding: 8px; width: auto; margin: 0 0 0 8px;}
+.photos_show .photo {width: 48px; margin: 9px 0 0 0; padding: 0 12px 0 0;}
+.photos_show .download {padding: 1px 0 0 0; margin: 9px 0 0 0; text-align: center;}
+.photos_show .download.uploaded {padding: 7px 0 0 0;}
+.photos_show .download.uploaded strong {display: inline-block; font-size: 1.3em; padding: 0 0 6px 0;}
+.photos_show .again {padding: 8px  12px; margin: 0 0 0 32px; background: #ececec; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.photos_show .again a {font-weight: normal;}
+.photos_show a.button {font-size: 1.6em; padding: 7px 16px; margin: 0 0 5px 0;}
+.photos_show span, .photos_show a.download {font-weight: normal; font-size: 1.1em;}
 .photos_show h3 {padding: 0 0 3px 0;}
 
 #error_explanation, #blurb, #flashes {padding: 8px 12px 10px 12px; background: #ececec; margin: 2px 0 8px 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 #error_explanation h5 {font-size: 1.3em;}
 #error_explanation ul {padding: 0 0 2px 0; margin: 0 0 0 20px;}
 #error_explanation ul li {font-size: 1.3em;}
-#flashes p {padding: 6px 0 0 0;}
-#flashes p:first-child {padding: 3px 0 0 0;}
+#flashes p {padding: 0;}
+#flashes p.str {padding: 6px 0 0 0;}
+#flashes p.str:first-child {padding: 3px 0 0 0;}
 
 
 p.footer {text-align: center; color: #909090; font-size: 1.1em; padding: 12px 0 4px 0;}

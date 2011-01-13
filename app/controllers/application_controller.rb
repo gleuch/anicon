@@ -1,8 +1,12 @@
-class ApplicationController < ActionController::Base
-  #protect_from_forgery
+require 'twitter/authentication_helpers'
 
+class ApplicationController < ActionController::Base
+  include Twitter::AuthenticationHelpers
+
+  #protect_from_forgery
   helper :all
   layout 'application'
+  rescue_from Twitter::Unauthorized, :with => :force_sign_in
 
   before_filter :app_init
 
@@ -34,5 +38,36 @@ protected
     (@add_meta_tags ||= []) << opts_hash
   end
   helper_method :add_meta
+
+
+private
+
+  def oauth_consumer
+    @oauth_consumer ||= OAuth::Consumer.new(configatron.twitter_token, configatron.twitter_secret, :site => 'http://api.twitter.com', :request_endpoint => 'http://api.twitter.com', :sign_in => true)
+  end
+
+  def client()
+    Twitter.configure do |config|
+      config.consumer_key       = configatron.twitter_token
+      config.consumer_secret    = configatron.twitter_secret
+      config.oauth_token        = current_user && !current_user.token.blank? ? current_user.token : session['access_token']
+      config.oauth_token_secret = current_user && !current_user.secret.blank? ? current_user.secret : session['access_secret']
+    end
+    @client ||= Twitter::Client.new
+  end
+  helper_method :client
+
+  def force_sign_in(exception)
+    reset_session
+    flash[:error] = "It seems your credentials are not good anymore. Please sign in again."
+    redirect_to new_session_path
+  end
+
+  def initiate_oauth_connect
+    request_token = oauth_consumer.get_request_token(:oauth_callback => callback_url)
+    session['request_token'] = request_token.token
+    session['request_secret'] = request_token.secret
+    redirect_to request_token.authorize_url
+  end
 
 end
