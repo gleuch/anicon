@@ -75,9 +75,11 @@ a.button {display: inline-block; text-decoration: none;}
 
 
 .photos_show .c.area {padding: 8px; width: auto; margin: 0 0 0 8px;}
+.embed.photos_show .area {width: 200px; overflow: visible; margin: 0 auto;}
 .photos_show .photo {width: 48px; margin: 9px 0 0 0; padding: 0 12px 0 0;}
 .photos_show .download {padding: 1px 0 0 0; margin: 9px 0 0 0; text-align: center;}
 .photos_show .download.uploaded {padding: 7px 0 0 0;}
+.photos_show .download.embed, .photos_show .download.uploaded.embed {padding: 0; line-height: 1.33em;}
 .photos_show .download.uploaded strong {display: inline-block; font-size: 1.3em; padding: 0 0 6px 0;}
 .photos_show .again {padding: 8px  12px; margin: 0 0 0 32px; background: #ececec; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 .photos_show .again a {font-weight: normal;}

@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
 
   def gallery
     @title = 'All Animated GIFs'
-    @photos = Photo.active.all(:limit => 1000, :order => 'created_at desc') rescue nil
+    @photos = Photo.active.all(:limit => 500, :order => 'created_at desc') rescue nil
     render :gallery, :layout => which_layout
   end
 

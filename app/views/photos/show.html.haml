@@ -5,7 +5,7 @@
   .area.c
     .photo.left
       %a{:href => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
-    .download.left{:class => (@photo.uploaded? ? 'uploaded' : '')}
+    .download.left{:class => "#{(@photo.uploaded? ? 'uploaded' : '')} #{embed? ? 'embed' : ''}"}
       - unless @photo.uploaded?
         %a.button{:href => "#{upload_photo_path(@photo)}#{embed_params}"} Upload to Twitter
         %br
@@ -17,10 +17,15 @@
           %a{:href => "http://twitter.com/#{@photo.user.screen_name}", :target => '_blank'} @#{@photo.user.screen_name}
         %br
         %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
-    .again.right
-      %h4 Another image?
-      %p
-        %a{:href => "#{new_photo_path}#{embed_params}"} Resize another animated GIF!
+        - if embed?
+          %br
+          %a.download{:href => "#{new_photo_path}#{embed_params}"} resize another GIF
+
+    - unless embed?
+      .again.right
+        %h4 Another image?
+        %p
+          %a{:href => "#{new_photo_path}#{embed_params}"} Resize another animated GIF!
 
   - if embed?
     = render 'globals/footer'
