@@ -17,9 +17,9 @@
           %a{:href => "http://twitter.com/#{@photo.user.screen_name}", :target => '_blank'} @#{@photo.user.screen_name}
         %br
         %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
-        - if embed?
-          %br
-          %a.download{:href => "#{new_photo_path}#{embed_params}"} resize another GIF
+      - if embed?
+        %br
+        %a.download{:href => "#{new_photo_path}#{embed_params}"} resize another GIF
 
     - unless embed?
       .again.right
