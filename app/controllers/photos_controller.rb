@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 
+  before_filter :check_twitter_oauth, :only => [:upload]
   before_filter :get_photo, :only => [:show, :destroy, :download, :upload]
 
   def index
@@ -70,6 +71,10 @@ class PhotosController < ApplicationController
 
 
 protected
+
+  def check_twitter_oauth
+    redirect_back_or(root_path) unless allow_twitter_oauth?
+  end
 
   def get_photo
     @photo = Photo.active.find(params[:id])

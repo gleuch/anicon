@@ -7,10 +7,15 @@
       %a{:href => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
     .download.left{:class => "#{(@photo.uploaded? ? 'uploaded' : '')} #{embed? ? 'embed' : ''}"}
       - unless @photo.uploaded?
-        %a.button{:href => "#{upload_photo_path(@photo)}#{embed_params}"} Upload to Twitter
-        %br
-        %span or
-        %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+        - if allow_twitter_oauth?
+          %a.button{:href => "#{upload_photo_path(@photo)}#{embed_params}"} Upload to Twitter
+          %br
+          %span or
+          %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+        - else
+          %a.button{:href => "#{download_photo_path(@photo)}#{embed_params}"} Download Image
+          %br
+          %span and upload to Twitter!
       - else
         %strong
           Used by

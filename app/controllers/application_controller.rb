@@ -19,6 +19,11 @@ protected
     add_meta(:property => 'robots',   :context => 'index,follow')
   end
 
+  def allow_twitter_oauth?
+    false # Twitter currently disabled app
+  end
+  helper_method :allow_twitter_oauth?
+
   # What environment are we in?
   def dev?; Rails.env.development?; end
   def prod?; Rails.env.production?; end

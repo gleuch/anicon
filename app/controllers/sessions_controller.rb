@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+
+  before_filter :check_twitter_oauth, :only => [:create, :callback]
+
+
   def new
     @user = client.user if signed_in?
   end
@@ -33,6 +37,14 @@ class SessionsController < ApplicationController
     )
 
     sign_in(@user)
-    redirect_back_or root_path
+    redirect_back_or(root_path)
   end
+
+
+protected
+
+  def check_twitter_oauth
+    redirect_back_or(root_path) unless allow_twitter_oauth?
+  end
+
 end
