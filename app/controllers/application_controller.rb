@@ -17,6 +17,8 @@ protected
   def app_init
     add_meta(:property => 'og:title', :context => 'Anicon, Animated Avatar Resizing')
     add_meta(:property => 'robots',   :context => 'index,follow')
+    @use_photo_size = :icon # :large
+    @use_sendfile = true
   end
 
   def allow_twitter_oauth?
