@@ -4,16 +4,16 @@
 - unless @photo.blank?
   .area.c
     .photo.left
-      %a{:href => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
+      %a{:target => "_blank", :href => @photo.photo.url(:large), :ghref => download_photo_path(@photo)}= image_tag(@photo.photo.url(:icon), :title => @photo.photo_file_name, :alt => @photo.photo_file_name)
     .download.left{:class => "#{(@photo.uploaded? ? 'uploaded' : '')} #{embed? ? 'embed' : ''}"}
       - unless @photo.uploaded?
         - if allow_twitter_oauth?
           %a.button{:href => "#{upload_photo_path(@photo)}#{embed_params}"} Upload to Twitter
           %br
           %span or
-          %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+          %a.download{:target => "_blank", :href => @photo.photo.url(:large), :ghref => "#{download_photo_path(@photo)}#{embed_params}"} download this image
         - else
-          %a.button{:href => "#{download_photo_path(@photo)}#{embed_params}"} Download Image
+          %a.button{:target => "_blank", :href => @photo.photo.url(:large), :ghref => "#{download_photo_path(@photo)}#{embed_params}"} Download Image
           %br
           %span and upload to Twitter!
       - else
@@ -21,7 +21,7 @@
           Used by
           %a{:href => "http://twitter.com/#{@photo.user.screen_name}", :target => '_blank'} @#{@photo.user.screen_name}
         %br
-        %a.download{:href => "#{download_photo_path(@photo)}#{embed_params}"} download this image
+        %a.download{:target => "_blank", :href => @photo.photo.url(:large), :ghref => "#{download_photo_path(@photo)}#{embed_params}"} download this image
       - if embed?
         %br
         %a.download{:href => "#{new_photo_path}#{embed_params}"} resize another GIF

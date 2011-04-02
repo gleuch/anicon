@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
 
 
   # Extra additions --------------------------------------------------------------------------
-  has_attached_file :photo, :styles => { :icon => '48x48#' }
+  has_attached_file :photo, :styles => { :icon => '48x48#', :large => '128x128#' }
 
 
   # Associations -----------------------------------------------------------------------------

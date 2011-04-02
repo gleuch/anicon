@@ -21,12 +21,13 @@ class PhotosController < ApplicationController
   end
 
   def download
-    send_file @photo.photo.path(:icon) and return
+    #render :text => @photo.photo.path(:large)
+    send_file @photo.photo.path(:large) and return
   end
 
   def upload
     if signed_in?
-      client.update_profile_image(File.new(@photo.photo.path(:icon)))
+      client.update_profile_image(File.new(@photo.photo.path(:large)))
 
       @photo.update_attributes(:uploaded => true, :user_id => current_user.id)
 
